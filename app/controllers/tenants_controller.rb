@@ -16,7 +16,7 @@ class TenantsController < ApplicationController
             begin
               @payment.process_payment
               @payment.save
-            rescue Exception => edit
+            rescue Exception => e
               flash[:error] = e.message
               @payment.destroy
               @tenant.plan = "free"
@@ -51,5 +51,4 @@ class TenantsController < ApplicationController
   def tenant_params
     params.require(:tenant).permit(:name, :plan)
   end
-  
 end

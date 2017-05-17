@@ -7,7 +7,7 @@
   <thead>
     <tr>
       <th>Email</th>
-      <th><%= t '.actions', :default => t("helper.actions") %></th>
+      <th><%= t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
@@ -28,12 +28,13 @@
   </tbody>
 </table>
 
-
+<h3>Users to add to Project <%= @project.title %></h3>
+<strong>(Admins don't need to be added)</strong>
 <table class="table table-striped">
   <thead>
     <tr>
       <th>Email</th>
-      <th><%= t '.actions', :default => t("helper.actions") %></th>
+      <th><%= t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
@@ -41,10 +42,10 @@
       <tr>
         <td><%= other_user.email %></td>
         <td>
-          <% if !project_user.is_admin? %>
-          <%= link_to "Add", add_user_tenant_project_path(id: @project.id, tenant_id: @project.tenant_id, user_id: other_user.id),
-                                :method => :put, 
-                                :class => 'btn btn-xs btn-success' %>
+          <%= link_to 'Add',
+                      add_user_tenant_project_path(id: @project.id, tenant_id: @project.tenant_id, user_id: other_user.id),
+                      :method => :put,
+                      :class => 'btn btn-xs btn-success' %>
         </td>
       </tr>
     <% end  %>
@@ -52,4 +53,4 @@
 </table>
 
 <%= link_to 'Back', tenant_project_path(id: @project.id, tenant_id: @project.tenant_id),
-                     :class => 'btn btn-primary' %>
+                      :class => 'btn btn-primary' %>
